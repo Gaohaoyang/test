@@ -160,7 +160,7 @@ function bar() {
 }
 bar.call(7); // "[object Number]"*/
 
-function f() {
+/*function f() {
     return this.a;
 }
 var g = f.bind({
@@ -172,6 +172,154 @@ var o = {
     f: f,
     g: g
 };
-console.log(o.f(), o.g()); // 37, test
+console.log(o.f(), o.g()); // 37, test*/
 
 // 绑定之后再调用时，仍然会按绑定时的内容走，所以 o.g() 结果是 test
+// 
+
+/*function foo(x, y, z) {
+    arguments.length; // 2
+    arguments[0]; // 1
+    arguments[0] = 10;
+    x; // change to 10
+
+    arguments[2] = 100;
+    z; // still undefined!!!
+    arguments.callee === foo; // true
+}
+
+foo(1, 2);
+foo.length; // 3
+foo.name; //"foo"*/
+
+/*function foo(x, y) {
+    console.log(x, y, this);
+}
+
+foo.call(100, 1, 2); //1 2 Number {[[PrimitiveValue]]: 100}
+foo.apply(true, [3, 4]); //3 4 Boolean {[[PrimitiveValue]]: true}
+foo.apply(null); //undefined undefined Window
+foo.apply(undefined); //undefined undefined Window*/
+
+/*this.x = 9;
+var module = {
+    x: 81,
+    getX: function() {
+        return console.log(this.x);
+    }
+};
+
+module.getX(); //81
+
+var getX = module.getX;
+getX(); //9
+
+var boundGetX = getX.bind(module);
+boundGetX(); //81*/
+
+/*function add(a, b, c) {
+    return a + b + c;
+}
+
+var func = add.bind(undefined, 100);
+func(1, 2); //103
+
+var fun2 = fun.bind(undefined, 200);
+func2(10); //310*/
+
+/*function foo() {
+    this.b = 100;
+    return this.a;
+}
+
+console.log(foo()); //undefined
+
+var func = foo.bind({
+    a: 1
+});
+
+console.log(func()); //1
+console.log(new func()); //foo {b: 100}*/
+
+/*function outer() {
+    var localVal = 30;
+    return localVal;
+}
+
+console.log(outer()); //30
+
+function outer2() {
+    var localVal = 30;
+    return function() {
+        return localVal;
+    };
+}
+
+var func = outer2();
+console.log(func()); //30
+
+! function() {
+    var localData = "localData here";
+    document.addEventListener('click',
+        function() {
+            console.log(localData);
+        });
+}();
+
+! function() {
+    var localData = "localData here";
+    var url = "http://www.baidu.com/";
+    $.ajax({
+        url: url,
+        success: function() {
+            // do sth...
+            console.log(localData);
+        }
+    });
+}()
+*/
+
+/*document.body.innerHTML = "<div id=div1>aaa</div>" + "<div id=div2>bbb</div><div id=div3>ccc</div>";
+for (var i = 1; i < 4; i++) {
+    document.getElementById('div' + i).
+    addEventListener('click', function() {
+        alert(i); // all are 4!
+    });
+}*/
+
+/*document.body.innerHTML = "<div id=div1>aaa</div>" + "<div id=div2>bbb</div><div id=div3>ccc</div>";
+for (var i = 1; i < 4; i++) {
+    ! function(i) {
+        document.getElementById('div' + i).
+        addEventListener('click', function() {
+            alert(i); // 1, 2, 3
+        });
+    }(i);
+}*/
+
+(function() {
+    var _userId = 9527;
+    var _typeId = "item";
+    var exp = {};
+
+    function converter(userId) {
+        return +userId;
+    }
+
+    exp.getUserId = function() {
+        return converter(_userId);
+    };
+
+    exp.getTypeId = function() {
+        return _typeId;
+    };
+
+    window.a = exp;
+})();
+
+console.log(a.getUserId()); //9527
+console.log(a.getTypeId()); //item
+
+console.log(a._userId); //undefined
+console.log(a._typeId); //undefined
+console.log(converter); //Uncaught ReferenceError: converter is not defined
