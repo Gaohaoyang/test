@@ -297,7 +297,7 @@ for (var i = 1; i < 4; i++) {
     }(i);
 }*/
 
-(function() {
+/*(function() {
     var _userId = 9527;
     var _typeId = "item";
     var exp = {};
@@ -322,4 +322,19 @@ console.log(a.getTypeId()); //item
 
 console.log(a._userId); //undefined
 console.log(a._typeId); //undefined
-console.log(converter); //Uncaught ReferenceError: converter is not defined
+console.log(converter); //Uncaught ReferenceError: converter is not defined*/
+
+/////////////////////////////////////////////////////////////////
+//************************OOP********************************* //
+/////////////////////////////////////////////////////////////////
+
+function Foo() {
+    this.y = 2;
+}
+console.log(typeof Foo.prototype); //object
+
+Foo.prototype.x = 1;
+var obj3 = new Foo();
+
+console.log(obj3.y); //2
+console.log(obj3.x); //1
