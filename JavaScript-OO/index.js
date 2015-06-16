@@ -328,7 +328,7 @@ console.log(converter); //Uncaught ReferenceError: converter is not defined*/
 //************************OOP********************************* //
 /////////////////////////////////////////////////////////////////
 
-function Foo() {
+/*function Foo() {
     this.y = 2;
 }
 console.log(typeof Foo.prototype); //object
@@ -337,4 +337,206 @@ Foo.prototype.x = 1;
 var obj3 = new Foo();
 
 console.log(obj3.y); //2
-console.log(obj3.x); //1
+console.log(obj3.x); //1*/
+
+//例
+
+/*function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.LEGS_NUM = 2;
+Person.prototype.ARMS_NUM = 2;
+
+Person.prototype.hi = function() {
+    console.log('Hi, my name is ' + this.name + ". I'm " + this.age + ' years old now');
+};
+
+Person.prototype.walking = function() {
+    console.log(this.name + ' is walking...');
+};
+
+function Student(name, age, className) {
+    Person.call(this, name, age); //使 Person 中的 this 指向 Student
+    this.className = className;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.hi = function() {
+    console.log('Hi, my name is ' + this.name + ". I'm " + this.age + ' years old now, and from ' + this.className + ".");
+};
+
+Student.prototype.learn = function(subject) {
+    console.log(this.name + ' is learning ' + subject + ' at ' + this.className + '.');
+}
+
+//test
+var gao = new Student('Gao', '24', 'Class 3123');
+console.log(gao);
+gao.hi(); //Hi, my name is Gao. I'm 24 years old now, and from Class 3123.
+gao.LEGS_NUM; //2
+gao.walking(); //Gao is walking...
+gao.learn('JavaScript'); //Gao is learning JavaScript at Class 3123.
+
+Student.prototype.x = 101;
+console.log(gao.x); //101
+
+Student.prototype = {
+    y: 2
+};
+console.log(gao.x); //101
+console.log(gao.y); //undefined
+
+var ying = new Student('Ying', 24, 'UI');
+console.log(ying.x); //undefined
+console.log(ying.y); //2*/
+
+/*Object.prototype.x = 1;
+var obj = {};
+console.log(obj.x); //1
+console.log(obj);
+
+for (var k in obj) {
+    console.log('result--->' + k);
+}
+// result--->x
+
+
+for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+        console.log("result--->" + key);
+    }
+}
+
+Object.defineProperty(Object.prototype, 'x', {
+    writable: true,
+    value: 1
+});
+var obj = {};
+console.log(obj.x);//1
+console.log(obj);
+for (var k in obj) {
+    console.log('result--->' + k);
+}
+// nothing output here*/
+
+/*console.log([1, 2] instanceof Array); //true
+console.log([1, 2] instanceof Object); //true
+console.log(new Object() instanceof Array); //false*/
+
+/*function Person() {}
+
+function Student() {}
+
+Student.prototype = Person.prototype; //1
+
+Student.prototype = new Person(); //2
+
+Student.prototype = Object.create(Person.prototype); //3
+
+Student.prototype.constructor = Student;
+
+if (!Object.create) {
+    Object.create = function(proto) {
+        function F() {}
+        F.prototype = proto;
+        return new F;
+    };
+}*/
+
+//---------------模拟重载------------------
+
+/*function Person() {
+    var args = arguments;
+    if (typeof args[0] === 'object' && args[0]) {
+        if (args[0].name) {
+            this.name = args[0].name;
+        }
+        if(args[0].age){
+            this.age = args[0].age;
+        }
+    } else {
+        if (args[0]) {
+            this.name = args[0];
+        }
+        if (args[1]) {
+            this.age = args[1];
+        }
+    }
+}
+
+//重写 toString 方法
+Person.prototype.toString = function() {
+    console.log('name='+this.name+', age='+this.age);
+};
+
+var gao = new Person({name:'Gao',age:24});
+gao.toString();
+
+var ying = new Person('Ying',25);
+ying.toString();*/
+
+//-------------------调用子类方法-----------------------
+
+/*function Person(name) {
+    this.name = name;
+}
+
+function Student(name, className) {
+    this.className = className;
+    Person.call(this, name); // 调用基类的构造器
+}
+
+var gao = new Student('Gao', '3123');
+console.log(gao); // Student {className: "3123", name: "Gao"}
+
+Person.prototype.init = function() {};
+
+Student.prototype.init = function() {
+    // do sth...
+    Person.prototype.init.apply(this, arguments); // 同时也想调用父类被覆盖的方法
+};*/
+
+//---------------------链式调用---------------------------
+
+/*function ClassManager() {}
+ClassManager.prototype.addClass = function(str) {
+    console.log('Class: ' + str + ' added');
+    return this;
+};
+
+var manager = new ClassManager();
+manager.addClass('classA').addClass('classB').addClass('classC');
+// Class: classA added
+// Class: classB added
+// Class: classC added*/
+
+//---------------------抽象类--------------------------
+
+function DetectorBase() {
+    throw new Error('Abstract class can not be invoked directly!');
+}
+
+DetectorBase.detect = function() {
+    console.log('Detection starting...');
+}
+DetectorBase.stop = function() {
+    console.log('Detection stopped.');
+};
+DetectorBase.init = function() {
+    throw new Error('Error');
+}
+
+// var d = new DetectorBase();
+
+function LinkDetector() {}
+LinkDetector.prototype = Object.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor = LinkDetector;
+
+var l = new LinkDetector();
+console.log(l);
+l.detect();
+l.init();
