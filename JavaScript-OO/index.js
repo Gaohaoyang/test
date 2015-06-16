@@ -516,7 +516,7 @@ manager.addClass('classA').addClass('classB').addClass('classC');
 
 //---------------------抽象类--------------------------
 
-function DetectorBase() {
+/*function DetectorBase() {
     throw new Error('Abstract class can not be invoked directly!');
 }
 
@@ -530,13 +530,36 @@ DetectorBase.init = function() {
     throw new Error('Error');
 }
 
-// var d = new DetectorBase();
+var d = new DetectorBase();// Uncaught Error: Abstract class can not be invoked directly!
 
 function LinkDetector() {}
 LinkDetector.prototype = Object.create(DetectorBase.prototype);
 LinkDetector.prototype.constructor = LinkDetector;
 
 var l = new LinkDetector();
-console.log(l);
-l.detect();
-l.init();
+console.log(l); //LinkDetector {}__proto__: LinkDetector
+l.detect(); //Uncaught TypeError: l.detect is not a function
+l.init(); //Uncaught TypeError: l.init is not a function*/
+
+var moduleA;
+moduleA = function() {
+    var prop = 1;
+
+    function func() {}
+
+    return {
+        func: func,
+        prop: prop
+    };
+};
+
+var moduleA;
+
+moduleA = new function() {
+    var prop = 1;
+
+    function func() {}
+    
+    this.func = func;
+    this.prop = prop;
+}
