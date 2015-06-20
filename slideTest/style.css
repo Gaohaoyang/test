@@ -23,6 +23,7 @@
 .wrap-page{
   top: 0;
   bottom: 0;
+  overflow: hidden;
 }
 
 /* page布局 */
