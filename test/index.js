@@ -16,7 +16,7 @@ B(1); //error*/
 // 
 
 
-var str = '"[1,2,3]"';
+/*var str = '"[1,2,3]"';
 var arrStr = str.slice(1,length-1);
 var array = JSON.parse(arrStr);
 console.log(arrStr);
@@ -27,7 +27,7 @@ var test = function() {
     console.log("函数表达式");
 };
 
-test();
+test();*/
 
 
 
@@ -41,3 +41,6 @@ test = function() {
 
 aa();
 test();*/
+
+
+// console.log([14, 3, 77].splice(1, 2));
