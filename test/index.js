@@ -44,3 +44,10 @@ test();*/
 
 
 // console.log([14, 3, 77].splice(1, 2));
+
+/*function foo4() {
+    function x() {}
+    var x;
+    console.log(x);
+}
+foo4(); // funtion x()*/
