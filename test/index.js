@@ -1,6 +1,44 @@
+console.log("test!!");
+
+/*var y = 1,
+x=y=typeof x;
+console.log(x);
+console.log(y);
+console.log(Math.round(15.49));
+console.log(123+"789");*/
+console.log(parseInt(1.5));
+
+// var a =  typeof typeof(null);
+// console.log(a);
+
+// var a = 2,b=3;
+// var r = a++==b?a:b;
+// console.log(r);
+// 
+// 
+// 
+// function f (x,y) {
+//     x=10;
+//     alert(arguments[0]+","+arguments[1]);
+// }
+// f();
+
+/*var a;
+var x = a === undefined;
+console.log(x);
+console.log(+"10");
+alert(2<1<3);
+var aa = 1234['toString']['length'];
+console.log(aa);
+
+console.log(parseInt("101中学"));
+
+console.log(!!"false");*/
+console.log("i am a student".subString(9,13));
+
 /*var a = 0;
 var b = 0;
-
+c
 function A(a) {
     function B(b) {
         alert(a + b++);
