@@ -1,13 +1,51 @@
-console.log("test!!");
+// console.log(typeof []);
+// console.log(!!"false");
 
+// var a= 2,b=3;
+// console.log(a++==b?a:b);
+// var x=3,y=4;
+// y+=x+2;
+// console.log(y);
+// var o = //;
+// a=2,b=5
+// console.log(a>b?a:b);
+var y=1,
+x=y=typeof x;
+console.log(x);
+console.log(y);
+
+
+
+
+
+
+
+
+
+// console.log("test!!");
+
+// console.log(null==undefined);
+// console.log(+"10");
+// console.log("round--"+Math.round(7.25));
+
+// console.log("-------");
+// console.log("1");
+// setTimeout('console.log("2");',1);
+// setTimeout(function  () {
+//     console.log('3');
+// },0);
+// console.log('4');
+// console.log("------------");
 /*var y = 1,
 x=y=typeof x;
 console.log(x);
 console.log(y);
 console.log(Math.round(15.49));
-console.log(123+"789");*/
-console.log(parseInt(1.5));
-
+// console.log(123+"789");*/
+// console.log(parseInt(1.5));
+// // console.log(a);
+// var d = new Date();
+// console.log(d.getMonth());
 // var a =  typeof typeof(null);
 // console.log(a);
 
@@ -34,7 +72,7 @@ console.log(aa);
 console.log(parseInt("101中学"));
 
 console.log(!!"false");*/
-console.log("i am a student".subString(9,13));
+// console.log("i am a student".subString(9,13));
 
 /*var a = 0;
 var b = 0;
