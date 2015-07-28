@@ -1,3 +1,58 @@
+var fake_json_function_list = {
+    "data": {
+        "1": "附近服务网点",
+        "2": "电脑保修查询",
+        "3": "网上报修服务",
+        "4": "服务热线查询",
+        "5": "全国服务网点"
+    }
+};
+var setFunctionList = function(json_function_list) {
+    var funData = json_function_list.data;
+    var htmlStrFun = '';
+    for (var funKey in funData) {
+        if (funData.hasOwnProperty(funKey)) {
+            console.log(funKey);
+            console.log(funData[funKey]);
+            htmlStrFun+='<option value='+funKey+'>'+funKey+'.'+funData[funKey]+'</option>';
+        }
+    }
+    console.log(htmlStrFun);
+};
+setFunctionList(fake_json_function_list);
+
+console.log("========Function======Article====Push========");
+var fake_json_article_list = {
+    "data": [{
+        "78": {
+            "id": "78",
+            "title": "系统调试安装",
+            "url": "http://weixin.lenovo.com.cn/qcs_product_1"
+        }
+    }, {
+        "79": {
+            "id": "79",
+            "title": "拆机！",
+            "url": "http://weixin.lenovo.com.cn/qcs_product_2"
+        }
+    }]
+};
+console.log(fake_json_article_list.data);
+var articleList = fake_json_article_list.data;
+var htmlStr = '<option value="-1">文章推送</option>';
+// 第一层循环得到对象数组
+for (var i = 0; i < articleList.length; i++) {
+    console.log(articleList[i]);
+    // 第二层循环遍历对象，得到详细数据
+    for (var key in articleList[i]) {
+        if (articleList[i].hasOwnProperty(key)) {
+            console.log(articleList[i][key]);
+            htmlStr += '<option value=' + articleList[i][key].id + ' url="' + articleList[i][key].url + '">' + articleList[i][key].title + '</option>';
+        }
+    }
+}
+console.log(htmlStr);
+
 // console.log(typeof []);
 // console.log(!!"false");
 
@@ -9,10 +64,10 @@
 // var o = //;
 // a=2,b=5
 // console.log(a>b?a:b);
-var y=1,
-x=y=typeof x;
-console.log(x);
-console.log(y);
+// var y=1,
+// x=y=typeof x;
+// console.log(x);
+// console.log(y);
 
 
 
