@@ -53,6 +53,7 @@ $.click("#left", function() {
     }
     timer = setInterval(rotate, intervalTime);
 });
+
 $.click("#right", function() {
     clearInterval(timer);
     if (nextID >= 5) {
