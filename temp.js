@@ -33,6 +33,17 @@ for (var name in anotherStooge) {
     }
 }
 
-anotherStooge.firstName
+anotherStooge.firstName //"bbb"
 delete anotherStooge.firstName
-anotherStooge.firstName
+anotherStooge.firstName //"aaa"
+
+
+var MYAPP = {}
+
+MYAPP.stooge = {
+    //...
+}
+
+MYAPP.flight = {
+    //...
+}
