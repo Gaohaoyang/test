@@ -26,3 +26,13 @@ anotherStooge.firstName //"aaa"
 anotherStooge.firstName = 'bbb'
 anotherStooge.firstName //"bbb"
 anotherStooge.hair //"black"
+
+for (var name in anotherStooge) {
+    if (anotherStooge.hasOwnProperty(name) && typeof anotherStooge[name] !== 'function') {
+        console.log(name + '--->' + anotherStooge[name])
+    }
+}
+
+anotherStooge.firstName
+delete anotherStooge.firstName
+anotherStooge.firstName
