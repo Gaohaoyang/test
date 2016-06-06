@@ -33,4 +33,24 @@ function add(a, b) {
 
 var add = function(a, b) {
     return a + b
+
+for (var name in anotherStooge) {
+    if (anotherStooge.hasOwnProperty(name) && typeof anotherStooge[name] !== 'function') {
+        console.log(name + '--->' + anotherStooge[name])
+    }
+}
+
+anotherStooge.firstName //"bbb"
+delete anotherStooge.firstName
+anotherStooge.firstName //"aaa"
+
+
+var MYAPP = {}
+
+MYAPP.stooge = {
+    //...
+}
+
+MYAPP.flight = {
+    //...
 }
