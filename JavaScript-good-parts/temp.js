@@ -26,3 +26,11 @@ anotherStooge.firstName //"aaa"
 anotherStooge.firstName = 'bbb'
 anotherStooge.firstName //"bbb"
 anotherStooge.hair //"black"
+
+function add(a, b) {
+    return a + b
+}
+
+var add = function(a, b) {
+    return a + b
+}
