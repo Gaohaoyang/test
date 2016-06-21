@@ -27,6 +27,13 @@ anotherStooge.firstName = 'bbb'
 anotherStooge.firstName //"bbb"
 anotherStooge.hair //"black"
 
+function add(a, b) {
+    return a + b
+}
+
+var add = function(a, b) {
+    return a + b
+
 for (var name in anotherStooge) {
     if (anotherStooge.hasOwnProperty(name) && typeof anotherStooge[name] !== 'function') {
         console.log(name + '--->' + anotherStooge[name])
